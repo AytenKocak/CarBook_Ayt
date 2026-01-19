@@ -12,9 +12,11 @@ namespace CarBook_Ayt_Persistance
     {
        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=LAPTOP-JT0HDA3C;Database=CarBookDB; " +
-                "integtrated Security=true;Trusted_Connection=True;");
-        }   
+            optionsBuilder.UseSqlServer("Server=.;Database=CarBookDb;Integrated Security=True;" +
+                "TrustServerCertificate=True");
+        }
+     
+
 
         public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
@@ -23,6 +25,14 @@ namespace CarBook_Ayt_Persistance
         public DbSet<CarDescription> CarDescriptions { get; set; }
         public DbSet<CarFeature> CarFeatures { get; set; }
         public DbSet<CarPricing> CarPricings { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CarPricing>()
+                .Property(x => x.Amount)
+                .HasPrecision(18, 2);
+
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Feature> Features { get; set; }
