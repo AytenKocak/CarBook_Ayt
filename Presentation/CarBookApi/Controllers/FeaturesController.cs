@@ -22,7 +22,7 @@ namespace CarBookApi.Controllers
         [HttpGet]
         public async Task<IActionResult> FeatureList()
         {
-            var values = await _mediator.Send(new GetFeatuerQuery());
+            var values = await _mediator.Send(new GetFeatureQuery());
             return Ok(values);  
 
         }

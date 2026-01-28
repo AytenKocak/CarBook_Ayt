@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Queries.FeatureQueries
 {
-    public class GetFeatuerQuery :IRequest<List<GetFeatureQueryResult>>
+    public class GetFeatureQuery :IRequest<List<GetFeatureQueryResult>>
     {
     }
 }
