@@ -25,12 +25,13 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandler
             if (value == null)
             {
                 if (value == null)
-                    throw  new Exception("Pricing  bulunamadı");
+                    throw  new Exception("Service  bulunamadı");
             }
-            return new GetPricingIdQueryResult
+           return new GetPricingIdQueryResult
             {
-                PricingID = value.PricingID,
-                Name = value.Name
+              PricingID = value.PricingID,
+               Name = value.Name,
+                
             };
 
         }

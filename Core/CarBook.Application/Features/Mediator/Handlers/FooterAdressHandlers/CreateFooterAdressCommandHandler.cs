@@ -21,6 +21,10 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAdressHandlers
 
         public async  Task<Unit> Handle(CreateFooterAdressCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "İstek boş olamaz.");
+            }
             await _repository.CreateAsync(new FooterAddress
             {
 

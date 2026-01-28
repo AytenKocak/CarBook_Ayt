@@ -21,6 +21,10 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandler
 
         public async Task<Unit> Handle(CreatePricingCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "İstek boş olamaz.");
+            }
             await _repository.CreateAsync(new Pricing
             {
                 Name = request.Name,

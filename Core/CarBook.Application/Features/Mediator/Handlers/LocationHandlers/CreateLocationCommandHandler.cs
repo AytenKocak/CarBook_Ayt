@@ -22,6 +22,10 @@ namespace CarBook.Application.Features.Mediator.Handlers.LocationFolder
 
         public async Task<Unit> Handle(CreateLocationCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "İstek boş olamaz.");
+            }
             await _repository.CreateAsync(new Location
             {
                 Name = request.Name

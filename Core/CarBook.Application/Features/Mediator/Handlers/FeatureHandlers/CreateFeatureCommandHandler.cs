@@ -21,6 +21,10 @@ namespace CarBook.Application.Features.Mediator.Handlers.FeatureHandlers
 
         public  async Task<Unit> Handle(CreateFeatureCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "İstek boş olamaz.");
+            }
             await _repository.CreateAsync(new Feature
             {
                 Name = request.Name
