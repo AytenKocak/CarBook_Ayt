@@ -1,0 +1,26 @@
+#  CarBook Project - Advanced .NET 8 Web API
+
+Bu proje, **Onion Architecture**  ve **CQRS & Mediator** tasarım desenleri üzerine inşa edilmiş, modern 
+bir araç kiralama sistemi backend çalışmasıdır.
+
+## Neden Bu Mimari?
+Projede katmanlar arası bağımlılığı minimize etmek ve sürdürülebilirliği artırmak için:
+-  SingleResponsibility Principle (SRP)
+- **Application Katmanı:** Tüm iş mantığı ve Handler yapıları burada toplandı.
+- **Domain Katmanı:** Varlıklar (Entities) ve çekirdek yapılar izole edildi.
+- **Persistence:** Veritabanı işlemleri Repository Pattern ile soyutlandı.
+
+## Teknik Yapı
+- **MediatR:** Command ve Query yönetimi için.
+- CQRS
+- **FluentValidation:** kod çalışmadan doğrulama mekanizması.
+- **Entity Framework Core:** Veri erişimi için.
+- Dto
+-Repository Pattern
+
+
+
+
+---
+**Geliştirici:** Ayten
+*"Kodda hata varsa, kokusunu alırım; MediatR varsa, düzeni kurarım."*
