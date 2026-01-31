@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{417D2F
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBook_Ayt_Dto", "Frontend\CarBook_Ayt_Dto\CarBook_Ayt_Dto.csproj", "{CF39BEA7-4E62-40FC-8F43-483BD609164B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{066B35A7-89D0-45B7-8BC4-DEEC9C1E82C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066B35A7-89D0-45B7-8BC4-DEEC9C1E82C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066B35A7-89D0-45B7-8BC4-DEEC9C1E82C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF39BEA7-4E62-40FC-8F43-483BD609164B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF39BEA7-4E62-40FC-8F43-483BD609164B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF39BEA7-4E62-40FC-8F43-483BD609164B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF39BEA7-4E62-40FC-8F43-483BD609164B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{5BCC8E6F-B510-4462-8BF1-D01608261C69} = {98F8D024-E996-43D7-A322-8F709AB8B010}
 		{1F5C3A81-5A98-4E33-82EB-A4E7FA36B61A} = {550E2A20-890C-45CF-B1DB-2DBE5C6B8B2A}
 		{066B35A7-89D0-45B7-8BC4-DEEC9C1E82C5} = {D7A19D2D-ED77-442A-B456-BA1038B82517}
+		{CF39BEA7-4E62-40FC-8F43-483BD609164B} = {D7A19D2D-ED77-442A-B456-BA1038B82517}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B0A583F-9001-416C-B808-74E43E0CD2DD}
