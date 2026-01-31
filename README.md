@@ -17,6 +17,7 @@ Projede katmanlar arası bağımlılığı minimize etmek ve sürdürülebilirli
 - **Entity Framework Core:** Veri erişimi için.
 - Dto
 -Repository Pattern
+-HttpClient kullanımı ile proje canlıya alınırken port değişimi çok kolay olacak :)))
 
 
 
