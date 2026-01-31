@@ -9,7 +9,6 @@ Projede katmanlar arası bağımlılığı minimize etmek ve sürdürülebilirli
 - **Application Katmanı:** Tüm iş mantığı ve Handler yapıları burada toplandı.
 - **Domain Katmanı:** Varlıklar (Entities) ve çekirdek yapılar izole edildi.
 - **Persistence:** Veritabanı işlemleri Repository Pattern ile soyutlandı.
-
 ## Teknik Yapı
 - **MediatR:** Command ve Query yönetimi için.
 - CQRS
@@ -17,7 +16,7 @@ Projede katmanlar arası bağımlılığı minimize etmek ve sürdürülebilirli
 - **Entity Framework Core:** Veri erişimi için.
 - Dto
 -Repository Pattern
--HttpClient kullanımı ile proje canlıya alınırken port değişimi çok kolay olacak :)))
+-HttpClient kullanımı ile proje canlıya alınırken port değişimi çok kolay olacak,ve server kaynakları korunacak:)))
 
 
 
