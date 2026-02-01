@@ -1,21 +1,22 @@
 ﻿using CarBook.Application.Features.CQRS.Results.CarResults;
 using CarBook.Application.Interfaces;
+using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Domain.Entities;
 
 namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
 {
     public class GetCarQueryHandler
     {
-        private readonly IRepository<Car> _repository;
+        private readonly ICarRepository _repository;
 
-        public GetCarQueryHandler(IRepository<Car> repository)
+        public GetCarQueryHandler(ICarRepository repository)
         {
             _repository = repository;
         }
 
         public async Task<List<GetCarQueryResult>> Handle()
         {
-            var values = await _repository.GetAllAsync();
+            var values = await _repository.GetCarWithBrandAsync();
             return values.Select(x => new GetCarQueryResult
             {
                 CarID = x.CarID,
@@ -28,13 +29,9 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
                 Seat=x.Seat,
                 Model=x.Model,
                Luggage=x.Luggage,
-                        
+               BrandName = x.Brand.Name
 
-                   
 
-                     
-
-                
             }).ToList();
 
         }

@@ -23,12 +23,13 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
             { BrandID = command.BrandID,
               Model = command.Model,
               CoverImageUrl = command.CoverImageUrl,
-              Km = command.Km,
+                Km = command.Km,
               Transmission = command.Transmission,
               Seat = command.Seat,
               Luggage = command.Luggage,
               Fuel = command.Fuel,
               BigImageUrl = command.BigImageUrl
+             
 
             });
         }

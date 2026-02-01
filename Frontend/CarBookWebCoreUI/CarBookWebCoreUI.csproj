@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\CarBook.Application\CarBook.Application.csproj" />
+    <ProjectReference Include="..\..\Core\CarBook.Domain\CarBook.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\CarBook_Ayt_Persistance\CarBook_Ayt_Persistance.csproj" />
+    <ProjectReference Include="..\..\Presentation\CarBookApi\CarBookApi.csproj" />
     <ProjectReference Include="..\CarBook_Ayt_Dto\CarBook_Ayt_Dto.csproj" />
   </ItemGroup>
 

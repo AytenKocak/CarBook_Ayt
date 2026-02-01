@@ -9,6 +9,6 @@ namespace CarBook.Application.Interfaces.CarInterfaces
 {
     public  interface ICarRepository
     {
-        List<Car> GetCarWithBrand();
+        Task<List<Car>> GetCarWithBrandAsync();
     }
 }

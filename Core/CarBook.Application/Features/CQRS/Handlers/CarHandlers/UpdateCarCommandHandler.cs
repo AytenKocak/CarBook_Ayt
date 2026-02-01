@@ -29,6 +29,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
             values.Luggage = command.Luggage;
             values.Fuel = command.Fuel;
             values.BigImageUrl = command.BigImageUrl;
+           
 
             await _repository.UpdateAsync(values);
         }

@@ -17,10 +17,14 @@ namespace CarBook_Ayt_Persistance.Repositories.CarRepositories
             _context = context;
         }
 
-        public List<Car> GetCarWithBrand()
+
+        public async Task<List<Car>> GetCarWithBrandAsync()
         {
-            var values=_context.Cars.Include(x=>x.Brand).ToList();
-            return values;
+            return await _context.Cars.Include(x => x.Brand).ToListAsync();
         }
+
+
+
+
     }
 }
