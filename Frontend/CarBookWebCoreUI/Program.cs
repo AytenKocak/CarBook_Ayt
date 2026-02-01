@@ -1,5 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
+
+var apiSettings = builder.Configuration.GetSection("ApiSettings");
+var baseUrl = apiSettings.GetValue<string>("BaseUrl");
+
+if (string.IsNullOrEmpty(baseUrl))
+{
+    throw new Exception("ApiSettings:BaseUrl bulunamadý!");
+}
+
+
+builder.Services.AddHttpClient("CarBookClient", client =>
+{
+    client.BaseAddress = new Uri(baseUrl);
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
@@ -23,6 +39,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=About}/{action=Index}/{id?}");
 
 app.Run();

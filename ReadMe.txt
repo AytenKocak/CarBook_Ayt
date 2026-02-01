@@ -17,6 +17,8 @@ Projede katmanlar arasý baðýmlýlýðý minimize etmek ve sürdürülebilirliði artýrma
 - **Entity Framework Core:** Veri eriþimi için.
 - Dto
 -Repository Pattern
+-HttpClientFactory ile Api program.cs ve appsettings.json da konfigüre edilmiþtir,böyleleikle api portlara 
+göre kolay ve rahat tek satýrda deðiþtirilebilir:))))
 
 
 

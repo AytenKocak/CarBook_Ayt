@@ -15,16 +15,20 @@ namespace CarBookWebCoreUI.ViewComponents.TestimonialViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMesage = await client.GetAsync("http://localhost:5013/api/Testimonials");
-            if(responseMesage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMesage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
-                return View(values);
-            }       
+            var client = _httpClientFactory.CreateClient("CarBookClient");
+            var responseMessage = await client.GetAsync("Testimonials");
 
-            return View();
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDto>>(jsonData);
+
+                return View(values ?? new List<ResultTestimonialDto>());
+            }
+
+         
+            return View(new List<ResultTestimonialDto>());
+
         }
     }
 }
