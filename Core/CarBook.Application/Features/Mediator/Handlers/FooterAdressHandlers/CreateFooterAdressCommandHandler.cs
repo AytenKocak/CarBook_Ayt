@@ -31,7 +31,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAdressHandlers
                 Description = request.Description,
                 Address = request.Address,
                 Phone = request.Phone,
-                Emial = request.Emial
+                Email= request.Email,
             });
             return Unit.Value;
         }

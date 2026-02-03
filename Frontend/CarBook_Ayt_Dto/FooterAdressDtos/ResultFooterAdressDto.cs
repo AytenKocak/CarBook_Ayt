@@ -1,13 +1,12 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.Mediator.Commands.FooterAdressCommands
+namespace CarBook_Ayt_Dto.FooterAdressDtos
 {
-    public class UpdateFooterAdressCommand:IRequest
+    public class ResultFooterAdressDto
     {
         public int FooterAddressID { get; set; }
         public string Description { get; set; }

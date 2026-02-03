@@ -26,7 +26,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAdressHandlers
               values.Description = request.Description;
             values.Address = request.Address;
              values.Phone = request.Phone;
-             values.Emial = request.Emial;
+             values.Email = request.Email;
             await _repository.UpdateAsync(values);
             return Unit.Value;
         }

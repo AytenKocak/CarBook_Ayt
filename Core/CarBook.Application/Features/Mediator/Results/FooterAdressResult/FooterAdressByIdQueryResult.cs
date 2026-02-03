@@ -12,6 +12,6 @@ namespace CarBook.Application.Features.Mediator.Results.FooterAdressResult
         public string Description { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public string Emial { get; set; }
+        public string Email { get; set; }
     }
 }

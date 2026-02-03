@@ -28,7 +28,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAdressHandlers
                 FooterAddressID = values.FooterAddressID,
                 Address = values.Address,
                 Description = values.Description,
-                Emial = values.Emial,
+                Email = values.Email,
                 Phone = values.Phone
             };
             return result;
