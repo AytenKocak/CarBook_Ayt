@@ -17,11 +17,15 @@ namespace CarBookApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
+        private readonly GetLast5CarWithBrandQueryHandler _getLast5CarWithBrandQueryHandler;
 
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, 
+        public CarsController(CreateCarCommandHandler createCarCommandHandler,
             GetCarQueryHandler getCarQueryHandler, 
-            GetCarByIdQueryHandler getCarByIdQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler,
-            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler)
+            GetCarByIdQueryHandler getCarByIdQueryHandler, 
+            RemoveCarCommandHandler removeCarCommandHandler,
+            UpdateCarCommandHandler updateCarCommandHandler,
+            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, 
+            GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarQueryHandler = getCarQueryHandler;
@@ -29,6 +33,7 @@ namespace CarBookApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _updateCarCommandHandler = updateCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
+            _getLast5CarWithBrandQueryHandler = getLast5CarWithBrandQueryHandler;
         }
 
         [HttpGet]
@@ -65,10 +70,18 @@ namespace CarBookApi.Controllers
             return Ok("Araç Bilgisi Güncellendi");
         }
         [HttpGet("GetCarWithBrand")]
-        public IActionResult GetCarWithBrand()
+        public async Task<IActionResult> GetCarWithBrand()
         {
-            var values = _getCarWithBrandQueryHandler.Handle();
+            var values = await _getCarWithBrandQueryHandler.Handle();
             return Ok(values);
-        }   
+        }
+
+        [HttpGet("GetLast5CarWithBrand")]
+        public async Task<IActionResult> GetLast5CarWithBrand()
+        {
+            var values = await _getLast5CarWithBrandQueryHandler.Handle();
+            return Ok(values);
+        }
     }
 }
+

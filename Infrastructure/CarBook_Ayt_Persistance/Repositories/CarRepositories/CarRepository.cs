@@ -23,8 +23,13 @@ namespace CarBook_Ayt_Persistance.Repositories.CarRepositories
             return await _context.Cars.Include(x => x.Brand).ToListAsync();
         }
 
-
-
-
+        public async  Task<List<Car>> GetLast5CarsWithBrands()
+        {
+            return await _context.Cars
+                                 .Include(x => x.Brand)
+                                 .OrderByDescending(x => x.CarID)
+                                 .Take(5)
+                                 .ToListAsync();
+        }//burda db den beş araba sorgusu
     }
 }
