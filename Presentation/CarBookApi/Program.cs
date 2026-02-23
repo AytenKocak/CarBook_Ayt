@@ -70,6 +70,10 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient("CarBookApi", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5013/");
+});
 
 var app = builder.Build();
 

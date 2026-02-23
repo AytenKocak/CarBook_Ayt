@@ -22,9 +22,8 @@ namespace CarBookWebCoreUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateContactDto createContactDto)
         {
-           
+            var client = _httpClientFactory.CreateClient("CarBookClient");
 
-            var client = _httpClientFactory.CreateClient();
             createContactDto.SendDate = DateTime.Now;
 
             var jsonData = JsonConvert.SerializeObject(createContactDto);
@@ -32,11 +31,10 @@ namespace CarBookWebCoreUI.Controllers
                 new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             var responseMessage =
-                await client.PostAsync("http://localhost:5013/api/Contacts", stringcontent);
+                await client.PostAsync("api/Contacts", stringcontent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
-              
                 return RedirectToAction("Index", "Car");
             }
 
