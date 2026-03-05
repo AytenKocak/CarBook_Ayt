@@ -6,7 +6,11 @@ namespace CarBookWebCoreUI.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            ViewBag.V1 = "Hizmetler";
+            {
+                ViewBag.V2 = "Hizmetlerimiz";
+                return View();
+            }
         }
     }
 }

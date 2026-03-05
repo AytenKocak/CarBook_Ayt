@@ -17,13 +17,13 @@ namespace CarBook_Ayt_Persistance.Repositories.BlogRepositories
             _carbookcontext = carbookcontext;
         }
 
-        public async Task<List<Blog>> GetLast3BlogsWithAuthors()
+        public async Task<List<Blog>> GetLast3BlogsWithAuthorsAsync()
         {
             return await _carbookcontext.Blogs
-            .Include(x => x.Author)
-            .OrderByDescending(x => x.CreatedDate)
-            .Take(3)
-            .ToListAsync();
+                .Include(x => x.Author)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(3)
+                .ToListAsync();
         }
     }
 }
