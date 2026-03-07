@@ -16,6 +16,8 @@ namespace CarBookWebCoreUI.ViewComponents.AboutViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            ViewBag.V1 = "Araçlarımız";
+            ViewBag.V2 = "Aracınızı Seçiniz";
             var client = _httpClientFactory.CreateClient("CarBookClient");
 
             var responseMessage = await client.GetAsync("Abouts");

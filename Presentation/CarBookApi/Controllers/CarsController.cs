@@ -18,14 +18,16 @@ namespace CarBookApi.Controllers
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarWithBrandQueryHandler _getLast5CarWithBrandQueryHandler;
+        private readonly GetCarWithPricingQueryHandler _getCarWithPricingQueryHandler;
 
         public CarsController(CreateCarCommandHandler createCarCommandHandler,
             GetCarQueryHandler getCarQueryHandler, 
             GetCarByIdQueryHandler getCarByIdQueryHandler, 
-            RemoveCarCommandHandler removeCarCommandHandler,
-            UpdateCarCommandHandler updateCarCommandHandler,
-            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, 
-            GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler)
+            RemoveCarCommandHandler removeCarCommandHandler, 
+            UpdateCarCommandHandler updateCarCommandHandler, 
+            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler,
+            GetLast5CarWithBrandQueryHandler getLast5CarWithBrandQueryHandler, 
+            GetCarWithPricingQueryHandler getCarWithPricingQueryHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarQueryHandler = getCarQueryHandler;
@@ -34,6 +36,7 @@ namespace CarBookApi.Controllers
             _updateCarCommandHandler = updateCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarWithBrandQueryHandler = getLast5CarWithBrandQueryHandler;
+            _getCarWithPricingQueryHandler = getCarWithPricingQueryHandler;
         }
 
         [HttpGet]
@@ -80,6 +83,12 @@ namespace CarBookApi.Controllers
         public async Task<IActionResult> GetLast5CarWithBrand()
         {
             var values = await _getLast5CarWithBrandQueryHandler.Handle();
+            return Ok(values);
+        }
+        [HttpGet("GetCarWithPricing")]
+        public async Task<IActionResult> GetCarWithPricing()
+        {
+            var values = await _getCarWithBrandQueryHandler.Handle();
             return Ok(values);
         }
     }

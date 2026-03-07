@@ -17,6 +17,7 @@ namespace CarBook_Ayt_Persistance.Repositories.CarRepositories
             _context = context;
         }
 
+      
 
         public async Task<List<Car>> GetCarWithBrandAsync()
         {

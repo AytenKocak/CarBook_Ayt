@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Interfaces.CarInterfaces
 {
-    public  interface ICarRepository
+    public interface ICarRepository
     {
         Task<List<Car>> GetCarWithBrandAsync();
-        Task <List<Car> > GetLast5CarsWithBrands();    
+        Task<List<Car>> GetLast5CarsWithBrands();
     }
 }

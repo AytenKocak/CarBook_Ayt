@@ -6,10 +6,12 @@ namespace CarBookWebCoreUI.Controllers
 {
     public class ServiceController : Controller
     {
-       
+        public IActionResult Index()
+        {
+            ViewBag.V1 = "Hizmetler";
+            ViewBag.V2 = "Hizmetlerimiz";
 
-        public IActionResult Index()        
-        { return View();
+            return View();
 
         }
     }
