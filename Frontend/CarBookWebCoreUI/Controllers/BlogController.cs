@@ -31,5 +31,12 @@ namespace CarBookWebCoreUI.Controllers
 
             return View(new List<ResultAllBlogsWithAuthorDto>());
         }
+        //Blogdetail için
+        public async Task<IActionResult> BlogDetail(int id)
+        {
+            ViewBag.V1 = "Blog Listesi";
+            ViewBag.V2 = "Blog Detayı";
+            return View();
+        }
     }
 }
