@@ -51,8 +51,8 @@ namespace CarBookApi.Controllers
             await _mediator.Send(command);
             return Ok("Özellik başarı ile güncellendi");
         }
-        [HttpGet("GetLast3BlogsWithAuthorsQueryResult")]
-        public async Task<IActionResult> GetLast3BlogsWithAuthorsQueryResult()
+        [HttpGet("GetLast3BlogsWithAuthorsList")]
+        public async Task<IActionResult> GetLast3BlogsWithAuthorsList()
         {
             var values = await _mediator.Send(new GetLast3BlogsWithAuthorsQuery());
             return Ok(values);
