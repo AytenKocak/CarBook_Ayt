@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Results.AuthorResults
 {
-    public class GetAuthorByIdQueryResult
+    public class GetTagColudByIdQueryResult
     {
         public int AuthorID { get; set; }
         public string Name { get; set; }

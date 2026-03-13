@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Queries.AuthorQueries
 {
-    public class GetAuthorByIdQuery :IRequest<GetAuthorByIdQueryResult>
+    public class GetAuthorByIdQuery :IRequest<GetTagColudByIdQueryResult>
     {
         public int Id { get; set; }
 

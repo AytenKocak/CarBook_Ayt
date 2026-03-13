@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
 {
-    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, GetAuthorByIdQueryResult>
+    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, GetTagColudByIdQueryResult>
     {
 
         private readonly IRepository<Author> _repository;
@@ -21,10 +21,10 @@ namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
             _repository = repository;
         }
 
-        public async  Task<GetAuthorByIdQueryResult> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
+        public async  Task<GetTagColudByIdQueryResult> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
         {
-            var value= _repository.GetByIdAsync(request.Id).Result;
-            return new GetAuthorByIdQueryResult
+            var value= await _repository.GetByIdAsync(request.Id);
+            return new GetTagColudByIdQueryResult
             {
                 AuthorID = value.AuthorID,
                 Name = value.Name,
