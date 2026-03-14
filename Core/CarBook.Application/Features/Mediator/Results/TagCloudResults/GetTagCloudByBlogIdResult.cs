@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook_Ayt_Dto.TagCloudDtos
+namespace CarBook.Application.Features.Mediator.Results.TagCloudResults
 {
-    public class ResultTagCloudDto
+    public class GetTagCloudByBlogIdResult
     {
         public int TagCloudID { get; set; }
         public string Title { get; set; }
