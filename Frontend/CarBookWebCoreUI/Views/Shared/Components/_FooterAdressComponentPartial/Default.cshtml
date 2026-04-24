@@ -1,0 +1,31 @@
+﻿@model List<ResultFooterAdressDto>
+
+<div class="ftco-footer-widget mb-4">
+    <h2 class="ftco-heading-2">Have a Questions?</h2>
+
+    <div class="block-23 mb-3">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <span class="icon icon-map-marker"></span>
+                    <span class="text">@item.Address</span>
+                </li>
+
+                <li>
+                    <a href="tel:@item.Phone">
+                        <span class="icon icon-phone"></span>
+                        <span class="text">@item.Phone</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mailto:@item.Email">
+                        <span class="icon icon-envelope"></span>
+                        <span class="text">@item.Email</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
