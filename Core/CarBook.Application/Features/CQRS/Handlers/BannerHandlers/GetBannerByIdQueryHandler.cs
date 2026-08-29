@@ -24,6 +24,10 @@ namespace CarBook.Application.Features.CQRS.Handlers.BannerHandlers
         public async Task<GetBannerByIdQueryResult> Handle(GetBannerByIdQuery query)
         {
             var values = await _repository.GetByIdAsync(query.Id);
+
+            if (values == null)
+                return null; 
+
             return new GetBannerByIdQueryResult
             {
                 BannerID = values.BannerID,

@@ -1,4 +1,4 @@
-﻿@using CarBook_Ayt_Dto.CarDtos
+﻿@using CarBook_Ayt_Dto.CarPricingDtos
 @model List<ResultCarPricingWithCarDto>
 @{
     ViewData["Title"] = "Index";
@@ -19,33 +19,19 @@
                     <div class="text">
                         <h2 class="mb-0"><a href="car-single.html">@item.Model</a></h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">@item.BrandName</span>
-                            <p class="price ml-auto">1200TL <span>/gün</span></p>
+                            <span class="cat">@item.Brand</span>
+                            <p class="price ml-auto">@item.Amount <span>TL/Günlük</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Hemen Kirala</a>
-                            <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
+                        <p class="d-flex mb-0 d-block"><a href="/Reservation/Index/@item.CarID" class="btn btn-primary py-2 mr-1">Hemen Kirala</a>
+                            <a href="/Car/CarDetails/@item.CarID" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
                     </div>
                 </div>
             </div>
             
         }       
             
+   </div>
         </div>
-        <div class="row mt-5">
-            <div class="col text-center">
-                <div class="block-27">
-                    <ul>
-                        <li><a href="#">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+    </section>
 

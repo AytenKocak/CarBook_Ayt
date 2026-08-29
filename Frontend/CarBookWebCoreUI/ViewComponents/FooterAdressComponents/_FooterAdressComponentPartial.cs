@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarBookWebCoreUI.ViewComponents.FooterAdressComponents
+namespace CarBookWebCoreUI.ViewComponents.FooterAddressComponents
 {
-    public class _FooterAdressComponentPartial :ViewComponent
+    public class _FooterAddressComponentPartial :ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _FooterAdressComponentPartial(IHttpClientFactory httpClientFactory)
+        public _FooterAddressComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -18,11 +18,11 @@ namespace CarBookWebCoreUI.ViewComponents.FooterAdressComponents
             var responseMessage=await client.GetAsync("Contacts");
             if (!responseMessage.IsSuccessStatusCode)
             {
-                return View("Index", new List<ResultFooterAdressDto>());
+                return View("Default", new List<ResultFooterAddressDto>());
             }
 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultFooterAdressDto>>(jsonData);
+            var values = JsonConvert.DeserializeObject<List<ResultFooterAddressDto>>(jsonData);
 
             return View(values);
         }

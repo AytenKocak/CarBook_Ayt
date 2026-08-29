@@ -5,26 +5,42 @@ using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CategoryHandler;
 using CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarBook.Application.Interfaces;
+using CarBook.Application.Interfaces.BlogInterfaces;
+using CarBook.Application.Interfaces.CarDescriptionInterfaces;
+using CarBook.Application.Interfaces.CarFeatureInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
+using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.StatisticsInterfaces;
+using CarBook.Application.Interfaces.TagCloudInterfaces;
+using CarBook.Application.RepositoryPattern;
+using CarBook.Application.Services;
+using CarBook.Domain.Entities;
 using CarBook_Ayt_Persistance;
 using CarBook_Ayt_Persistance.Repositories;
-using CarBook_Ayt_Persistance.Repositories.CarRepositories;
-using CarBook.Application.Services;
 using CarBook_Ayt_Persistance.Repositories.BlogRepositories;
-using CarBook.Application.Interfaces.BlogInterfaces;
-using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook_Ayt_Persistance.Repositories.CarDescriptionRepositories;
+using CarBook_Ayt_Persistance.Repositories.CarFeatureRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarPricingRepositories;
-using CarBook.Application.Interfaces.TagCloudInterfaces;
+using CarBook_Ayt_Persistance.Repositories.CarRepositories;
+using CarBook_Ayt_Persistance.Repositories.CommentRepositories;
+using CarBook_Ayt_Persistance.Repositories.RentACarInterfaces;
+using CarBook_Ayt_Persistance.Repositories.RentACarRepositories;
+using CarBook_Ayt_Persistance.Repositories.StatisticsRepositories;
 using CarBook_Ayt_Persistance.Repositories.TagCloudepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<ICarRepository, CarBook_Ayt_Persistance.Repositories.CarRepositories.CarRepository>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<ICarPricingRepository, CarPricingRepository>();
 builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
+builder.Services.AddScoped<IRentACarRepository, RentACarRepositories>();
+builder.Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+builder.Services.AddScoped<IGenericRepository<Comment>, CommentRepository>();
+builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
+builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>();  
 
 builder.Services.AddScoped<CreateAboutCommandHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -51,7 +67,7 @@ builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
 builder.Services.AddScoped<GetLast5CarWithBrandQueryHandler>();
-builder.Services.AddScoped<GetCarWithPricingQueryHandler>();
+
 
 builder.Services.AddScoped<CreateCategoryCommandHandler>();
 builder.Services.AddScoped<GetCategoryByIdCommandHandler>();
@@ -68,36 +84,62 @@ builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.SaveApplicationServices();
 builder.Services.AddControllers();
 
+// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.WithOrigins(
+                "https://localhost:7270", // UI projesi
+                "http://localhost:7270"   // HTTP alternatifi
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
 
+// Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient("CarBookApi", client =>
+builder.Services.AddSwaggerGen(c =>
 {
-    client.BaseAddress = new Uri("http://localhost:5013/");
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "CarBook API",
+        Version = "v1"
+    });
 });
 
 var app = builder.Build();
 
+
+
+// Middleware Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        // Swagger JSON dosyasýnýn yolunu belirtir
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarBook API V1");
+
+        // EÐER Swagger'ýn direkt localhost:5013/ adresinde açýlmasýný istiyorsan 
+        // aþaðýdaki satýrý aktif býrak. 
+        // EÐER localhost:5013/swagger adresinde açýlmasýný istiyorsan 
+        // aþaðýdaki satýrý yorum satýrý yap (baþýna // koy).
+
+        // c.RoutePrefix = string.Empty; 
+    });
 }
+
+//app.UseHttpsRedirection(); // Eðer port hatasý alýyorsan bunu eklemek güvenli olur
 
 app.UseCors("AllowAll");
 
-// app.UseHttpsRedirection();  // DEV için kapalý
+app.UseRouting();
 
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

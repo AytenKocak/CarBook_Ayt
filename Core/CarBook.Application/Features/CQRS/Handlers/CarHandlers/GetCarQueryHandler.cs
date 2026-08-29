@@ -14,10 +14,10 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetCarQueryResult>> Handle()
+        public async Task<List<GetCarCountQueryt>> Handle()
         {
             var values = await _repository.GetCarWithBrandAsync();
-            return values.Select(x => new GetCarQueryResult
+            return values.Select(x => new GetCarCountQueryt
             {
                 CarID = x.CarID,
                 BigImageUrl=x.BigImageUrl,

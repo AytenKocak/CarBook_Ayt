@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Commands.TestimonialCommands
 {
-    public class RemovetesTimonialCommand : IRequest<Unit>
+    public class RemoveTestimonialCommand : IRequest
     {
         public int Id { get; set; }
 
-        public RemovetesTimonialCommand(int id)
+        public RemoveTestimonialCommand(int ıd)
         {
-            Id = id;
+            Id = ıd;
         }
     }
 }

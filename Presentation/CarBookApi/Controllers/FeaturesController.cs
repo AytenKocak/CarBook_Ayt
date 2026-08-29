@@ -46,9 +46,10 @@ namespace CarBookApi.Controllers
             await _mediator.Send( new RemoveFeatureCommand(id));
             return Ok("Özellik başarı ile silindi");
         }   
-        [HttpPut]
-        public async Task <IActionResult> UpdateFeature(UpdateFeatureCommand command)
+        [HttpPut ("{id}")]
+        public async Task <IActionResult> UpdateFeature(int id,UpdateFeatureCommand command)
         {
+            command .FeatureID = id;
             await _mediator.Send(command);
             return Ok("Özellik başarı ile güncellendi");
         }

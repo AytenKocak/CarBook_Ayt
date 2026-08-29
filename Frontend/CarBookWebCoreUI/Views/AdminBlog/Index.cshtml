@@ -1,0 +1,76 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 1;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                           Bloglarla ilgiliSil,Güncelle ve Listeleme yapabilirsiniz.Admin Tarafından Blog eklenemez.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Yazar</th>
+                                        <th>Kategori ID</th>
+                                        <th>Tarih</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Bloğu Aç</th>
+                                        <th>Blog Yorumlar</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.AuthorName</td>
+                                            <td>@item.CategoryID</td>
+                                            <td>@item.CreatedDate.ToShortDateString()</td>
+                                       
+
+                                            <td>
+                                                <a href="/AdminBlog/RemoveBlog/@item.BlogID"
+                                                   class="btn btn-outline-danger">Sil</a>
+                                            </td>
+
+                                            <td>
+                                                <a href="/AdminBlog/UpdateBlog/@item.BlogID"
+                                                   class="btn btn-outline-success">Güncelle</a>
+                                            </td>
+                                            <td>
+                                                <a href="/Blog/BlogDetail/@item.BlogID"
+                                                   class="btn btn-outline-success">Bloğu Aç</a>
+                                            </td>
+                                            <td>
+                                                <a href="/AdminComment/Index/@item.BlogID"
+                                                   class="btn btn-outline-success">Blog Yorumlar</a>
+                                            </td>
+                                           
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>                         
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

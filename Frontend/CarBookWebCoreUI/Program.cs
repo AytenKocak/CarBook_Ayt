@@ -1,44 +1,50 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 
-var apiSettings = builder.Configuration.GetSection("ApiSettings");
-var baseUrl = apiSettings.GetValue<string>("BaseUrl");
+var baseUrl = builder.Configuration["ApiSettings:BaseUrl"];
 
-if (string.IsNullOrEmpty(baseUrl))
+if (string.IsNullOrWhiteSpace(baseUrl))
 {
-    throw new Exception("ApiSettings:BaseUrl bulunamad�!");
+    throw new Exception("ApiSettings:BaseUrl bulunamadı!");
 }
 
 
 builder.Services.AddHttpClient("CarBookClient", client =>
 {
-    client.BaseAddress = new Uri(baseUrl);
+    client.BaseAddress = new Uri(baseUrl.EndsWith("/") ? baseUrl : baseUrl + "/");
+    client.DefaultRequestHeaders.Accept.Clear();
     client.DefaultRequestHeaders.Add("Accept", "application/json");
     client.Timeout = TimeSpan.FromSeconds(30);
 });
-// Add services to the container.
+
+
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+
+app.UseHttpsRedirection(); 
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
 
+
+app.UseStaticFiles();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=AdminStatistics}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=About}/{action=Index}/{id?}");
+    pattern: "{controller=Default}/{action=Index}/{id?}");
 
 app.Run();

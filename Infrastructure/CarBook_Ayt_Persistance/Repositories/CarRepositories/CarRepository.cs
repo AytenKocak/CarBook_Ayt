@@ -17,7 +17,10 @@ namespace CarBook_Ayt_Persistance.Repositories.CarRepositories
             _context = context;
         }
 
-      
+        public int GetCarCount()
+        {
+            return _context.Cars.Count();
+        }               
 
         public async Task<List<Car>> GetCarWithBrandAsync()
         {
@@ -31,6 +34,8 @@ namespace CarBook_Ayt_Persistance.Repositories.CarRepositories
                                  .OrderByDescending(x => x.CarID)
                                  .Take(5)
                                  .ToListAsync();
-        }//burda db den beş araba sorgusu
+        }
+
+    
     }
 }

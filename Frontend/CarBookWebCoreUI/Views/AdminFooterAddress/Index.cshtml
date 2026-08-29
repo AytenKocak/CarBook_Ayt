@@ -1,0 +1,96 @@
+﻿@model List<ResultFooterAddressDto>
+
+@{
+    ViewData["Title"] = "Footer Adresleri";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">İletişim ve Footer Adres Alanı</h4>
+
+                        <p class="card-subtitle mb-4">
+                            İletişim ve footer adres alanlarını bu sayfadan düzenleyebilirsiniz.Tema bütünlüğünü
+
+                            korumak adına sadece 1 veri yüklemenizi öneririz.
+                        </p>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Adres</th>
+                                        <th>Telefon</th>
+                                        <th>Email</th>
+                                        <th>Açıklama</th>
+                                        <th width="120">Sil</th>
+                                        <th width="120">Güncelle</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Address</td>
+                                                <td>@item.Phone</td>
+                                                <td>@item.Email</td>
+                                                <td>@item.Description</td>
+
+                                                <td>
+                                                    <a href="/AdminFooterAddress/DeleteFooterAddress/@item.FooterAddressID"
+                                                       class="btn btn-danger">
+                                                        Sil
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <a href="/AdminFooterAddress/UpdateFooterAddress/@item.FooterAddressID"
+                                                       class="btn btn-success">
+                                                        Güncelle
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                Henüz kayıt bulunmamaktadır.
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <br />
+
+                        <a href="/AdminFooterAddress/CreateFooterAddress"
+                           class="btn btn-primary">
+                            Yeni Adres Ekle
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

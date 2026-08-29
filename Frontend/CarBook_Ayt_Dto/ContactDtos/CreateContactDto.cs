@@ -8,7 +8,7 @@ namespace CarBook_Ayt_Dto.CreateContactDtos
 {
     public class CreateContactDto
     {
-        public int ContactID { get; set; }
+     
         public string Name { get; set; }
         public string Email { get; set; }
         public string Subject { get; set; }

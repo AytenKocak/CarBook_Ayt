@@ -18,7 +18,7 @@ namespace CarBookWebCoreUI.Controllers
         public async Task < IActionResult >Index()
         {
             var client = _httpClientFactory.CreateClient("");
-            var responseMessage = await client.GetAsync("http://localhost:5013/api/Cars/GetCarWithPricing");
+            var responseMessage = await client.GetAsync("http://localhost:5013/api/CarPricings");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -29,6 +29,13 @@ namespace CarBookWebCoreUI.Controllers
 
 
             return View( new List <ResultCarPricingWithCarDto>());
+        }
+        public async Task <IActionResult> CarDetails(int id)
+        {
+            ViewBag.v1="Araç Detayları";
+            ViewBag.v2="Arcın Özellikleri";
+            ViewBag.carid = id;
+            return View();
         }
     }
 }

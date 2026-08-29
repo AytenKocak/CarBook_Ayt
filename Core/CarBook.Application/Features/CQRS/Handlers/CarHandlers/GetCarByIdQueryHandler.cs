@@ -19,10 +19,16 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
             _repository = repository;
         }
 
-        public async Task <GetCarByIdQueryResult> Handle(GetCarByIdQuery query )
+        public async Task<GetCarByIdQueryResult?> Handle(GetCarByIdQuery query)
         {
+            var values = await _repository.GetByIdAsync(query.Id);
 
-            var values =await _repository.GetByIdAsync(query.Id);
+            // Eğer ID veritabanında yoksa null döner
+            if (values == null)
+            {
+                return null;
+            }
+
             return new GetCarByIdQueryResult
             {
                 CarID = values.CarID,
@@ -35,11 +41,10 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
                 Model = values.Model,
                 Seat = values.Seat,
                 Transmission = values.Transmission,
-                BrandName = values.Brand.Name
-
-
-
+                BrandName = values.Brand?.Name ?? "Marka Yok"
             };
         }
     }
 }
+
+

@@ -1,0 +1,60 @@
+﻿@model UpdateSocialMediaDto
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+}
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title"> Sosyal Medya Veri Düzenleme Alanı</h4>
+
+                        <p class="card-subtitle mb-4">
+                            Ana Sayfa Sosyal Medya ait düzenleme işlemlerinin
+                            burdan yapabilirsiniz.
+                        </p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="SocialMediaID" />
+                            <div class="form-group mb-3">
+                                <label asp-for="Name" class="form-label">Hizmet Başlığı</label>
+                                <input asp-for="Name"
+                                       class="form-control"
+                                       placeholder="Sosyal Medya Başlığı Giriniz " />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="Url" class="form-label">Sosyal Media Url linkini Giriniz</label>
+                                <input asp-for="Url"
+                                       class="form-control"
+                                       placeholder="Link Girişi Yapınız" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="Icon" class="form-label">Ikon Url</label>
+                                <input asp-for="Icon"
+                                       class="form-control"
+                                       placeholder="IconUrl link  Girişi Yapınız" />
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Sosyal Medya bilgisini Kaydet
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

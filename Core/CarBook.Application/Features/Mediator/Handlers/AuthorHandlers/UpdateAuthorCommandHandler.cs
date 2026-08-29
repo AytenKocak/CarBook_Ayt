@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
 {
     public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, Unit>
-    { private readonly IRepository<Author> _repository;
+    {
+        private readonly IRepository<Author> _repository;
 
         public UpdateAuthorCommandHandler(IRepository<Author> repository)
         {
@@ -21,14 +22,17 @@ namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
         public async Task<Unit> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetByIdAsync(request.AuthorID);
+
             if (values == null)
-            { throw new Exception("Author Bulunamadı"); }
+                throw new Exception("Author Bulunamadı");
 
             values.Name = request.Name;
             values.ImageUrl = request.ImageUrl;
             values.Description = request.Description;
+
+            await _repository.UpdateAsync(values);
+
             return Unit.Value;
         }
-       
     }
 }

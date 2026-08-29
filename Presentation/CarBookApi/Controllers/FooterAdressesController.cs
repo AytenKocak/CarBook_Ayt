@@ -10,42 +10,42 @@ namespace CarBookApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FooterAdressesController : ControllerBase
+    public class FooterAddressesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public FooterAdressesController(IMediator mediator)
+        public FooterAddressesController(IMediator mediator)
         {
             _mediator = mediator;
         }
         [HttpGet]
-        public async Task<IActionResult> FooterAdressList()
+        public async Task<IActionResult> FooterAddressList()
         {
-            var values = await _mediator.Send(new GetFooterAdressQuery());
+            var values = await _mediator.Send(new GetFooterAddressQuery());
             return Ok(values);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetFooterAdress(int id)
+        public async Task<IActionResult> GetFooterAddress(int id)
         {
-            var value = await _mediator.Send(new GetFooterAdressByIdQuery(id));
+            var value = await _mediator.Send(new GetFooterAddressByIdQuery(id));
             return Ok(value);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateFeature(CreateFooterAdressCommand command)
+        public async Task<IActionResult> CreateFooterAddress(CreateFooterAddressCommand command)
         {
 
             await _mediator.Send(command);
             return Ok("FooterAdress başarı ile  eklendi");
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveFooterAdress(int id)
+        public async Task<IActionResult> RemoveFooterAddress(int id)
         {
-            await _mediator.Send(new RemoveFooterAdressCommand(id));
+            await _mediator.Send(new RemoveFooterAddressCommand(id));
             return Ok("FooterAdress başarı ile silindi");
 
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateFooterAdress(UpdateFooterAdressCommand command)
+        public async Task<IActionResult> UpdateFooterAddress(UpdateFooterAddressCommand command)
         {
             await _mediator.Send(command);
             return Ok("Özellik başarı ile güncellendi");

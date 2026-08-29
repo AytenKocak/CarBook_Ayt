@@ -25,8 +25,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
             return values.Select(x => new GetCarWithBrandQueryResult
             {  BrandName = x.Brand.Name,
                 CarID = x.CarID,
-                BigImageUrl = x.BigImageUrl,
-           
+                BigImageUrl = x.BigImageUrl,           
                 BrandID = x.BrandID,
                 CoverImageUrl = x.CoverImageUrl,
                 Fuel = x.Fuel,

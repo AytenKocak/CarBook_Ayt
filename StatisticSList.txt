@@ -1,0 +1,15 @@
+Araba Sayıları
+Lokasyon Sayısı
+Yazar Sayısı
+BlogSayısı
+Marka sayısı
+Günlük ortalama araç Kiralamafiyatı
+Haftalık ortalama araç Kiralamafiyatı
+Aylık ortalama araç Kiralamafiyatı
+Otomatik vites araba sayısı
+En fazla araç markası
+En fazla yorum alan başlık
+1000km den düşük araçlar
+benzin veya dizel araçlar
+en pahalı araç
+en ucuz araç

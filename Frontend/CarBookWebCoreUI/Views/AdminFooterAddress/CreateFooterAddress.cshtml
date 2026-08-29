@@ -1,0 +1,69 @@
+﻿@model CreateFooterAddressDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+ 
+}
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Yeni Sdress Bilgisi Girişi </h4>
+
+                        <p class="card-subtitle mb-4">
+                         Adres Alanına ait Bilgileri Aşağıdaki Panelden Yapabilirsiniz.
+
+                        </p>
+
+                        <form method="post">
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Address" class="form-label">Adres</label>
+                                <input asp-for="Address"
+                                       class="form-control"
+                                       placeholder="Adres Girişi Yapınız" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Phone" class="form-label">Phone</label>
+                                <input asp-for="Phone"
+                                       class="form-control"
+                                       placeholder="Telefon Numarası Girişi Yapınız" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Description" class="form-label"> Açıklama</label>
+                                <input asp-for="Description"
+                                       class="form-control"
+                                       placeholder="Açıklama Giriniz" />
+                            </div>   
+
+                            <div class="form-group mb-3">
+                            <label asp-for="Email" class="form-label"> Mail</label>
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   placeholder="Mail Adresini Giriniz " />
+                        </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                             Bilgileri Kaydet
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

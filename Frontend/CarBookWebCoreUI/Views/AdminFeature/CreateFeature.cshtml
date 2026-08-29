@@ -1,0 +1,48 @@
+﻿@model CreateFeatureDto  
+
+@{
+    ViewData["Title"] = "CreateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Araç Özelliği Girişi</h4>
+
+                        <p class="card-subtitle mb-4">
+                            Araç özelliklerini bu sayfadan ekleyip,güncelleyip silebilirsiniz.
+                            Temanın görünüşü için verilerin sayısını 3 ün katı olarak giriniz
+                        </p>
+
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label>Özellik</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       asp-for="Name"
+                                       placeholder="Özellik Girişi Yapınız" />
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Özelliği Kaydet
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model UpdateAuthorDto
+@{
+    ViewData["Title"] = "Update Author";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Yazar Bilgileri Güncelleme Sayfası</h4>
+
+                        <p class="card-subtitle mb-4">
+                            Yazar bilgilerini buradan güncelleyebilirsiniz.
+                        </p>
+
+                        <form method="post" asp-action="UpdateAuthor">
+
+                            <input type="hidden" asp-for="AuthorID" />
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Name" class="form-label">Ad Soyad</label>
+                                <input asp-for="Name"
+                                       class="form-control"
+                                       placeholder="Ad Soyad Giriniz" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="ImageUrl" class="form-label">Resim Yolu</label>
+                                <input asp-for="ImageUrl"
+                                       class="form-control"
+                                       placeholder="Resim Yolu Giriniz" />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Description" class="form-label">Açıklama</label>
+                                <input asp-for="Description"
+                                       class="form-control"
+                                       placeholder="Açıklama Giriniz" />
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Güncelle
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

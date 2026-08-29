@@ -1,0 +1,90 @@
+﻿@model List<CarPricingListWithModelDto>
+
+<div class="card h-100">
+
+    <div class="card-body">
+
+        <div class="d-flex align-items-center justify-content-between mb-3">
+
+            <div>
+                <h4 class="card-title mb-1">
+                    Araç Fiyatları
+                </h4>
+
+                <p class="card-subtitle font-size-13 mb-0">
+                    Araç kiralama fiyatları
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="table table-centered table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+                        <th class="border-top-0">
+                            Marka
+                        </th>
+
+                        <th class="border-top-0">
+                            Model
+                        </th>
+
+                        <th class="border-top-0">
+                            Günlük
+                        </th>
+
+                        <th class="border-top-0">
+                            Haftalık
+                        </th>
+
+                        <th class="border-top-0">
+                            Aylık
+                        </th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @item.Brand
+                            </td>
+
+                            <td>
+                                @item.Model
+                            </td>
+
+                            <td>
+                                @item.DailyAmount TL
+                            </td>
+
+                            <td>
+                                @item.WeeeklyAmount TL
+                            </td>
+
+                            <td>
+                                @item.MountlyAmount TL
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

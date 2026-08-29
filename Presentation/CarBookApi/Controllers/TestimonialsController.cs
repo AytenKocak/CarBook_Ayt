@@ -41,7 +41,7 @@ namespace CarBookApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveTestimonial(int id)
         {
-            await _mediator.Send(new RemovetesTimonialCommand(id));
+            await _mediator.Send(new RemoveTestimonialCommand(id));
             return Ok("Özellik başarı ile silindi");
         }
         [HttpPut]

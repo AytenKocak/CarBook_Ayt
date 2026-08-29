@@ -41,12 +41,17 @@ namespace CarBookApi.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryCommand command)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand command)
         {
+            if (command == null)
+                return BadRequest("Boş veri gönderilemez");
+
             await _createCategoryCommandHandler.Handle(command);
-            return Ok("Kategori Bilgisi Eklendi");
 
-
+            return Ok(new
+            {
+                message = "Kategori başarıyla eklendi"
+            });
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveCategory(int id)

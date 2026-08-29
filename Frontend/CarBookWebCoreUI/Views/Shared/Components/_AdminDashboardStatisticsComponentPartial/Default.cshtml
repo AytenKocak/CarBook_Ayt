@@ -1,0 +1,196 @@
+﻿<div class="row">
+
+    <!-- KART 1 -->
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card bg-primary border-primary h-100">
+            <div class="card-body">
+
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">
+                        Aktif Araçlar
+                    </span>
+
+                    <h5 class="card-title mb-0 text-white">
+                        Toplam Araç Sayısı
+                    </h5>
+                </div>
+
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="text-white mb-0">
+                            @ViewBag.v
+                        </h2>
+                    </div>
+
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">
+                            @ViewBag.v1%
+                            <i class="mdi mdi-arrow-up"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm"
+                     style="height:7px;">
+
+                    <div class="progress-bar bg-light"
+                         role="progressbar"
+                         style="width:@ViewBag.v1%;">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- KART 2 -->
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card bg-success border-success h-100">
+            <div class="card-body">
+
+                <div class="mb-4">
+                    <span class="badge badge-soft-light float-right">
+                        Aktif Lokasyonlar
+                    </span>
+
+                    <h5 class="card-title mb-0 text-white">
+                        Lokasyon Sayısı
+                    </h5>
+                </div>
+
+                <div class="row d-flex align-items-center mb-4">
+
+                    <div class="col-8">
+                        <h2 class="text-white mb-0">
+                            @ViewBag.locationCount
+                        </h2>
+                    </div>
+
+                    <div class="col-4 text-right">
+                        <span class="text-white-50">
+                            @ViewBag.locationCountRandom%
+                            <i class="mdi mdi-arrow-up"></i>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm"
+                     style="height:7px;">
+
+                    <div class="progress-bar bg-light"
+                         role="progressbar"
+                         style="width:@ViewBag.locationCountRandom%;">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- KART 3 -->
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card bg-warning border-warning h-100">
+            <div class="card-body">
+
+                <div class="mb-4">
+
+                    <span class="badge badge-soft-light float-right">
+                        Aktif Yazarlar
+                    </span>
+
+                    <h5 class="card-title mb-0 text-white">
+                        Yazar Sayısı
+                    </h5>
+
+                </div>
+
+                <div class="row d-flex align-items-center mb-4">
+
+                    <div class="col-8">
+                        <h2 class="text-white mb-0">
+                            @ViewBag.authourCount
+                        </h2>
+                    </div>
+
+                    <div class="col-4 text-right">
+
+                        <span class="text-white-50">
+                            @ViewBag.authourCountRandom%
+                            <i class="mdi mdi-arrow-up"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm"
+                     style="height:7px;">
+
+                    <div class="progress-bar bg-light"
+                         role="progressbar"
+                         style="width:@ViewBag.authourCountRandom%;">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- KART 4 -->
+    <div class="col-md-6 col-xl-3 mb-4">
+        <div class="card bg-secondary border-secondary h-100">
+            <div class="card-body">
+
+                <div class="mb-4">
+
+                    <span class="badge badge-soft-light float-right">
+                        Aktif Bloglar
+                    </span>
+
+                    <h5 class="card-title mb-0 text-white">
+                        Blog Sayısı
+                    </h5>
+
+                </div>
+
+                <div class="row d-flex align-items-center mb-4">
+
+                    <div class="col-8">
+                        <h2 class="text-white mb-0">
+                            @ViewBag.blogCount
+                        </h2>
+                    </div>
+
+                    <div class="col-4 text-right">
+
+                        <span class="text-white-50">
+                            @ViewBag.blogCountRandom%
+                            <i class="mdi mdi-arrow-up"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="progress badge-soft-light shadow-sm"
+                     style="height:7px;">
+
+                    <div class="progress-bar bg-light"
+                         role="progressbar"
+                         style="width:@ViewBag.blogCountRandom%;">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,68 @@
+﻿@model List<ResultSocialMediaDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+    int count = 1;
+}
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sosyal Medya yönetim Alanı</h4>
+                        <p class="card-subtitle mb-4">
+                            Ana Sayfa Sosyal Medya ile ilgili işlemlerinizi bu sayfadan düzenleyebilirsiniz.              
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Aç</th>
+                                     
+
+                                
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            
+
+                                            <td>
+                                                <a href="/AdminSocialMedia/RemoveSocialMedia/@item.SocialMediaID" class="btn btn-outline-danger">Sil</a>
+                                            </td>
+                                            <td>
+                                                <a href="/AdminSocialMedia/UpdateSocialMedia/@item.SocialMediaID" class="btn btn-outline-success">Güncelle</a>
+                                         
+                                            </td>
+                                            <td>
+                                                <a href="/AdminSocialMedia/UpdateSocialMedia/@item.SocialMediaID" class="btn btn-outline-success">Aç</a>
+
+                                            </td>
+                                           
+                                        </tr>
+                                        count++;
+                                    }
+                                </tbody>
+                            </table>
+                            <br />
+                            <a href="/AdminSocialMedia/CreateSocialMedia" class="btn btn-primary">Yeni Sosyal Media Girişi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model CreateTestimonialDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+   
+}
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title"> Referans  Veri Giriş Alanı</h4>
+
+                        <p class="card-subtitle mb-4">
+                            Ana Sayfa Referans bölümü Ekle,Sil,Güncelle işlemlerinin
+                            burdan yapabilirsiniz.
+                        </p>
+
+                        <form method="post">
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Name" class="form-label">Referans Ad Soyad </label>
+                                <input asp-for="Name"
+                                       class="form-control"
+                                       placeholder="Referans Adı ve Soyadı Giriniz " />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="Title" class="form-label"> Konu başlığı Giriniz</label>
+                                <input asp-for="Title"
+                                       class="form-control"
+                                       placeholder="Başlık Girişi Yapınız" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="ImageUrl" class="form-label">Resim Yolu</label>
+                                <input asp-for="ImageUrl"
+                                       class="form-control"
+                                       placeholder="Rewsim Yolu  Girişi Yapınız" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="Comment" class="form-label">Yorum</label>
+                                <input asp-for="Comment" textarea="text" row="5"
+                                       class="form-control"
+                                       placeholder="Yorumunuzu Yapınız" />
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary waves-effect waves-light">
+                                Referans bilgilerini Kaydet
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

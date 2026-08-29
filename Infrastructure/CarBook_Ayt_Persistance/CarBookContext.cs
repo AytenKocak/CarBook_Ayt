@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CarBook_Ayt_Persistance
 {
-    public class CarBookContext:DbContext
+    public class CarBookContext : DbContext
     {
-       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=CarBookDb;Integrated Security=True;" +
                 "TrustServerCertificate=True");
         }
-     
+
 
 
         public DbSet<About> Abouts { get; set; }
@@ -25,14 +25,7 @@ namespace CarBook_Ayt_Persistance
         public DbSet<CarDescription> CarDescriptions { get; set; }
         public DbSet<CarFeature> CarFeatures { get; set; }
         public DbSet<CarPricing> CarPricings { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CarPricing>()
-                .Property(x => x.Amount)
-                .HasPrecision(18, 2);
 
-            base.OnModelCreating(modelBuilder);
-        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Feature> Features { get; set; }
@@ -45,5 +38,34 @@ namespace CarBook_Ayt_Persistance
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<TagCloud> TagClouds { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<RentACar> RentACars { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<RentACarProcess> RentACarProcesses { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CarPricing>()
+                .Property(x => x.Amount)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<RentACarProcess>()
+                .Property(x => x.TotalPrice)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.PickUpLocation)
+                .WithMany(y => y.PickUpReservation)
+                .HasForeignKey(z => z.PickUpLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.DropOffLocation)
+                .WithMany(y => y.DropOffReservation)
+                .HasForeignKey(w => w.DropOffLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

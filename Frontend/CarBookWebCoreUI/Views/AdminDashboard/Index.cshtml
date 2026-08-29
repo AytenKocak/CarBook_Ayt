@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- SAYFA BAŞLIĞI -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">
+                        Dashboard
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        @await Component.InvokeAsync("_AdminDashboardStatisticsComponentPartial")
+
+        <!-- ALT TABLOLAR -->
+        <div class="row">
+
+            <!-- ARAÇ FİYATLARI -->
+            <div class="col-xl-6 col-lg-6 mb-4">
+                @await Component.InvokeAsync("_AdminDashboardCarpricingListComponentPartial")
+            </div>
+
+            <!-- BLOGLAR -->
+            <div class="col-xl-6 col-lg-6 mb-4">
+                @await Component.InvokeAsync("_AdminDashboardBlogListComponentPartial")
+            </div>
+
+            <!-- GRAFİKLER -->@* buraya geri dön *@
+            <div class="col-12 mb-4">
+                <div class="row">
+
+                    <!-- Sütun Grafiği (Bar Chart) -->
+                    @await Component.InvokeAsync("_AdminDashBoardChartComponentPartial")
+                    <!-- Halka Grafik (Donut Chart) -->
+                    <div class="col-xl-4 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="dropdown float-right position-relative">
+                                    <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#" class="dropdown-item">Action</a></li>
+                                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <h4 class="card-title d-inline-block">Daily Sales</h4>
+
+                                <div id="morris-donut-example" class="morris-chart" style="height: 260px;"></div>
+
+                                <div class="row text-center mt-4">
+                                    <div class="col-6">
+                                        <h4>5,459</h4>
+                                        <p class="text-muted mb-0">Total Sales</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4>18</h4>
+                                        <p class="text-muted mb-0">Open Compaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                    <!-- Çizgi Grafik (Line Chart) -->
+                    <div class="col-xl-4 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="dropdown float-right position-relative">
+                                    <a href="#" class="dropdown-toggle h4 text-muted" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#" class="dropdown-item">Action</a></li>
+                                        <li><a href="#" class="dropdown-item">Another action</a></li>
+                                        <li><a href="#" class="dropdown-item">Something else here</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <li><a href="#" class="dropdown-item">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <h4 class="card-title d-inline-block">Total Revenue</h4>
+
+                                <div id="morris-line-example" class="morris-chart" style="height: 260px;"></div>
+
+                                <div class="row text-center mt-4">
+                                    <div class="col-6">
+                                        <h4>$7841.12</h4>
+                                        <p class="text-muted mb-0">Total Revenue</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4>17</h4>
+                                        <p class="text-muted mb-0">Open Compaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- SCRIPTS                        -->
+<!-- ============================== -->
+<script src="~/Admin/vertical/assets/js/jquery.min.js"></script>
+<script src="~/Admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/Admin/vertical/assets/js/metismenu.min.js"></script>
+<script src="~/Admin/vertical/assets/js/waves.js"></script>
+<script src="~/Admin/vertical/assets/js/simplebar.min.js"></script>
+<script src="~/Admin/vertical/plugins/morris-js/morris.min.js"></script>
+<script src="~/Admin/plugins/raphael/raphael.min.js"></script>
+<script src="~/Admin/assets/pages/dashboard-demo.js"></script>
+<script src="~/Admin/vertical/assets/js/theme.js"></script>
+
+<style>
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .page-content {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container-fluid {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .card {
+        margin-bottom: 0;
+    }
+</style>

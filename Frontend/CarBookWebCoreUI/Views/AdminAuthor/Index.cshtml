@@ -1,0 +1,89 @@
+﻿@model List<ResultAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Ana Sayfa Yazar Alanı</h4>
+                        <p class="card-subtitle mb-4">
+                            Yazar ile ilgili bilgileri bu sayfadan düzenleyebilirsiniz.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th style="width:250px;">Ad Soyad</th>
+                                        <th style="width:400px;">Açıklama</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Yazarın Blogları</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+
+                                            <td style="vertical-align:middle;">
+                                                <img src="@item.ImageUrl"
+                                                     width="50"
+                                                     height="50"
+                                                     style="object-fit:cover;border-radius:50%;margin-right:10px;" />
+                                                @item.Name
+                                            </td>
+
+                                            <td style="vertical-align:middle;">
+                                                @item.Description
+                                            </td>
+
+                                            <td style="vertical-align:middle;">
+                                                <a href="/AdminAuthor/RemoveAuthor/@item.AuthorID"
+                                                   class="btn btn-outline-danger btn-sm">
+                                                    Sil
+                                                </a>
+                                            </td>
+
+                                            <td style="vertical-align:middle;">
+                                                <a href="/AdminAuthor/UpdateAuthor/@item.AuthorID"
+                                                   class="btn btn-outline-success btn-sm">
+                                                    Güncelle
+                                                </a>
+                                            </td>
+
+                                            <td style="vertical-align:middle;">
+                                                <a href="/AdminAuthor/UpdateAuthor/@item.AuthorID"
+                                                   class="btn btn-outline-info btn-sm">
+                                                    Yazarın Blogları
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <br />
+
+                            <a href="/AdminAuthor/CreateAuthor" class="btn btn-primary">
+                                Yeni Author Girişi
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
