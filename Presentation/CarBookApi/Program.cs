@@ -10,6 +10,7 @@ using CarBook.Application.Interfaces.CarDescriptionInterfaces;
 using CarBook.Application.Interfaces.CarFeatureInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.ReviewRepository;
 using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Application.Interfaces.TagCloudInterfaces;
 using CarBook.Application.RepositoryPattern;
@@ -21,12 +22,13 @@ using CarBook_Ayt_Persistance.Repositories.BlogRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarDescriptionRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarFeatureRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarPricingRepositories;
-using CarBook_Ayt_Persistance.Repositories.CarRepositories;
 using CarBook_Ayt_Persistance.Repositories.CommentRepositories;
 using CarBook_Ayt_Persistance.Repositories.RentACarInterfaces;
 using CarBook_Ayt_Persistance.Repositories.RentACarRepositories;
+using CarBook_Ayt_Persistance.Repositories.ReviewRepository;
 using CarBook_Ayt_Persistance.Repositories.StatisticsRepositories;
 using CarBook_Ayt_Persistance.Repositories.TagCloudepositories;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +42,9 @@ builder.Services.AddScoped<IRentACarRepository, RentACarRepositories>();
 builder.Services.AddScoped<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddScoped<IGenericRepository<Comment>, CommentRepository>();
 builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
-builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>();  
+builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>(); 
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>(); 
+
 
 builder.Services.AddScoped<CreateAboutCommandHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -83,6 +87,11 @@ builder.Services.AddScoped<UpdateContactCommandHandler>();
 
 builder.Services.SaveApplicationServices();
 builder.Services.AddControllers();
+builder.Services.AddControllers();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+
+
 
 // CORS Configuration
 builder.Services.AddCors(options =>
