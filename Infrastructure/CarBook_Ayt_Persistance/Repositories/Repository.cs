@@ -1,5 +1,6 @@
 ﻿using CarBook.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace CarBook_Ayt_Persistance.Repositories
 {
@@ -21,6 +22,11 @@ namespace CarBook_Ayt_Persistance.Repositories
         public Task<List<T>> GetAllAsync()
         {
            return _context.Set<T>().ToListAsync();
+        }
+
+        public Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return _context.Set<T>().SingleOrDefaultAsync(filter);
         }
 
         public Task<T> GetByIdAsync(int id)

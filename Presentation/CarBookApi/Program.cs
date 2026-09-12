@@ -5,6 +5,8 @@ using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CategoryHandler;
 using CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarBook.Application.Interfaces;
+using CarBook.Application.Interfaces.AppRoleInterfaces;
+using CarBook.Application.Interfaces.AppUserInterfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarDescriptionInterfaces;
 using CarBook.Application.Interfaces.CarFeatureInterfaces;
@@ -18,6 +20,8 @@ using CarBook.Application.Services;
 using CarBook.Domain.Entities;
 using CarBook_Ayt_Persistance;
 using CarBook_Ayt_Persistance.Repositories;
+using CarBook_Ayt_Persistance.Repositories.AppRoleRepositories;
+using CarBook_Ayt_Persistance.Repositories.AppUsersRepositories;
 using CarBook_Ayt_Persistance.Repositories.BlogRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarDescriptionRepositories;
 using CarBook_Ayt_Persistance.Repositories.CarFeatureRepositories;
@@ -29,8 +33,26 @@ using CarBook_Ayt_Persistance.Repositories.ReviewRepository;
 using CarBook_Ayt_Persistance.Repositories.StatisticsRepositories;
 using CarBook_Ayt_Persistance.Repositories.TagCloudepositories;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+   {
+       opt.RequireHttpsMetadata = false;
+       opt.TokenValidationParameters = new TokenValidationParameters
+       {
+           ValidAudience = "https://localhost",
+           ValidIssuer = "https://localhost",
+           ClockSkew = TimeSpan.Zero,
+           IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("carbookcarbook0123456789")),
+           ValidateLifetime = true,
+           ValidateIssuerSigningKey = true,
+
+
+       };
+   });
+
 
 builder.Services.AddScoped<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -44,6 +66,8 @@ builder.Services.AddScoped<IGenericRepository<Comment>, CommentRepository>();
 builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
 builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>(); 
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>(); 
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>(); 
+builder.Services.AddScoped<IAppRoleRepository, AppRoleRepositories>(); 
 
 
 builder.Services.AddScoped<CreateAboutCommandHandler>();
